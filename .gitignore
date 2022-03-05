@@ -1,0 +1,12 @@
+# SSH keys. Just in case... : )
+*.pub
+id_rsa
+*.ppk
+id.*
+*.pem
+
+# Bash history.
+.bash_history
+
+# Workfiles
+NOTES
