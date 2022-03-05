@@ -35,16 +35,16 @@ foreach ($uwp in $uwpApps) {
 # Install common apps
 $commonApps = @(
     "7zip.7zip",
-		"flux.flux",
-		"Opera.Opera",
-		"Figma.Figma",
-		"VideoLAN.VLC",
-		"Notion.Notion",
-		"ShareX.ShareX",
-		"NordVPN.NordVPN",
-		"Discord.Discord",
-		"Microsoft.PowerToys",
-		"PowerSoftware.PowerISO",
+		# "flux.flux",
+		# "Opera.Opera",
+		# "Figma.Figma",
+		# "VideoLAN.VLC",
+		# "Notion.Notion",
+		# "ShareX.ShareX",
+		# "NordVPN.NordVPN",
+		# "Discord.Discord",
+		# "Microsoft.PowerToys",
+		# "PowerSoftware.PowerISO",
 		"NickeManarin.ScreenToGif")
 
 Write-Host "Installing common apps" -ForegroundColor Cyan
@@ -63,14 +63,15 @@ foreach ($app in $commonApps) {
 }
 
 $devApps = @(
-		"PuTTY.PuTTY",
-		"Postman.Postman",
-		"Canonical.Ubuntu",
-		"Lexikos.AutoHotkey",
+		# "PuTTY.PuTTY",
+		# "Postman.Postman",
+		# "Canonical.Ubuntu",
+		# "Lexikos.AutoHotkey",
 		"Microsoft.WindowsTerminal",
-		"TimKosse.FileZilla.Client",
+		# "TimKosse.FileZilla.Client",
 		"Microsoft.VisualStudioCode",
-		"AnyDeskSoftwareGmbH.AnyDesk")
+		# "AnyDeskSoftwareGmbH.AnyDesk"
+    )
 
 Write-Host "Installing development apps" -ForegroundColor Cyan
 Write-Host "---------------------------" -ForegroundColor Cyan

@@ -9,11 +9,12 @@ if (!Get-Command -Name "choco") {
 
 # Install apps with chocolatey
 $chocoApps = @(
-  "paint.net",
-  "autoruns",
+  # "paint.net",
+  # "autoruns",
   "firacode",
   # "devtoys", # Error installing in choco, unable in winget install from msstore
-  "cmder")
+  # "cmder"
+  )
 
 Write-Host "Installing apps with choco" -ForegroundColor Cyan
 Write-Host "--------------------------" -ForegroundColor Cyan
