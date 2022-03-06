@@ -5,7 +5,6 @@ function Check-Command($name) {
 # Basic commands
 function which($name) { Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition }
 function touch($file) { "" | Out-File $file -Encoding ASCII }
-
 # Common Editing needs
 # function Edit-Hosts { Invoke-Expression "sudo $(if($env:EDITOR -ne $null)  {$env:EDITOR } else { 'notepad' }) $env:windir\system32\drivers\etc\hosts" }
 # function Edit-Profile { Invoke-Expression "$(if($env:EDITOR -ne $null)  {$env:EDITOR } else { 'notepad' }) $profile" }
@@ -333,4 +332,13 @@ function prompt {
   Write-Host $path -NoNewline -ForegroundColor 'Cyan'
 
   return $userPrompt
+}
+
+function ShowColors {
+    $colors = [enum]::GetValues([System.ConsoleColor])
+
+    Foreach ($bgcolor in $colors){
+        Foreach ($fgcolor in $colors) { Write-Host "$fgcolor|"  -ForegroundColor $fgcolor -BackgroundColor $bgcolor -NoNewLine }
+        Write-Host " on $bgcolor"
+    }
 }

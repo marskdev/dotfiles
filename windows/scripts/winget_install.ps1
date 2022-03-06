@@ -1,3 +1,5 @@
+Write-Host "Installing winget and some apps" -ForegroundColor Cyan
+Write-Host "--------------------------------" -ForegroundColor Cyan
 #Based on this gist: https://gist.github.com/crutkas/6c2096eae387e544bd05cde246f23901
 $hasPackageManager = Get-AppPackage -name 'Microsoft.DesktopAppInstaller'
 if (!$hasPackageManager -or [version]$hasPackageManager.Version -lt [version]"1.10.0.0") {
@@ -14,27 +16,32 @@ if (!$hasPackageManager -or [version]$hasPackageManager.Version -lt [version]"1.
     Add-AppxPackage -Path $latestRelease.browser_download_url
 }
 else {
-    "winget already installed"
+    Write-Host "winget already installed"
 }
+
+# This is just for continue executing
+winget list --accept-source-agreements > $mock
 
 # Remove a few pre-installed UWP applications
 $uwpApps = @(
   "Microsoft.549981C3F5F10_8wekyb3d8bbwe",
   "Microsoft.OneDrive");
 
+Write-Host "`nRemoving UWP pre-installed apps..." -ForegroundColor Yellow
 foreach ($uwp in $uwpApps) {
   $listApp = winget list --exact -q $uwp
   if ([String]::Join("", $listApp).Contains($uwp)) {
     winget uninstall --exact --silent $uwp
     Write-Host "$uwp was removed" -ForegroundColor Green
   } else {
-    Write-Host "$uwp not found" -ForegroundColor Yellow
+    Write-Host "$uwp not found"
   }
 }
 
 # Install common apps
 $commonApps = @(
-    "7zip.7zip",
+	"Git.Git",
+    "7zip.7zip"
 		# "flux.flux",
 		# "Opera.Opera",
 		# "Figma.Figma",
@@ -45,20 +52,20 @@ $commonApps = @(
 		# "Discord.Discord",
 		# "Microsoft.PowerToys",
 		# "PowerSoftware.PowerISO",
-		"NickeManarin.ScreenToGif")
+		# "NickeManarin.ScreenToGif"
+		)
 
-Write-Host "Installing common apps" -ForegroundColor Cyan
-Write-Host "----------------------" -ForegroundColor Cyan
+Write-Host "`nInstalling common apps" -ForegroundColor Yellow
 
 foreach ($app in $commonApps) {
   #check if the app is already installed
   $listApp = winget list --exact -q $app
   if (![String]::Join("", $listApp).Contains($app)) {
     Write-host "Installing:" $app -ForegroundColor Yellow
-    # winget install --exact --silent $app
+    winget install --exact --silent $app
     Write-Host "$app was installed" -ForegroundColor Green
   } else {
-    Write-Host "$app already installed" -ForegroundColor Yellow
+    Write-Host "$app already installed"
   }
 }
 
@@ -69,21 +76,22 @@ $devApps = @(
 		# "Lexikos.AutoHotkey",
 		"Microsoft.WindowsTerminal",
 		# "TimKosse.FileZilla.Client",
-		"Microsoft.VisualStudioCode",
+		"Microsoft.VisualStudioCode"
 		# "AnyDeskSoftwareGmbH.AnyDesk"
     )
 
-Write-Host "Installing development apps" -ForegroundColor Cyan
-Write-Host "---------------------------" -ForegroundColor Cyan
+Write-Host "`nInstalling development apps" -ForegroundColor Yellow
 
 foreach ($app in $devApps) {
   #check if the app is already installed
   $listApp = winget list --exact -q $app
   if (![String]::Join("", $listApp).Contains($app)) {
     Write-host "Installing:" $app -ForegroundColor Yellow
-    # winget install --exact --silent $app
+    winget install --exact --silent $app
     Write-Host "$app was installed" -ForegroundColor Green
   } else {
-    Write-Host "$app already installed" -ForegroundColor Yellow
+    Write-Host "$app already installed"
   }
 }
+
+Write-Host "`n"

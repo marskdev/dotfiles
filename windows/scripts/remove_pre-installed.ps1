@@ -2,8 +2,8 @@
 # Remove a few pre-installed UWP applications
 # To list all appx packages:
 # PS> Get-AppxPackage | Format-Table -Property Name,Version,PackageFullName
-Write-Host "Removing UWP pre-installed apps..." -ForegroundColor Green
-Write-Host "----------------------------------" -ForegroundColor Green
+Write-Host "Removing UWP pre-installed apps" -ForegroundColor Cyan
+Write-Host "-------------------------------" -ForegroundColor Cyan
 $uwpApps = @(
   "4DF9E0F8.Netflix",
   "Microsoft.People",
@@ -27,11 +27,23 @@ $uwpApps = @(
   "Microsoft.MixedReality.Portal",
   "Microsoft.MicrosoftSolitaireCollection")
 
+$uwpFoundCount = 0
 foreach ($uwp in $uwpApps) {
   if (Get-AppxPackage -Name $uwp) {
-    Get-AppxPackage -Name $uwp | Remove-AppxPackage
-    Write-Host "$uwp was removed" -ForegroundColor Green
-  } else {
-    Write-Host "$uwp not found" -ForegroundColor Yellow
+    $uwpFoundCount++
   }
 }
+
+  if ($uwpFoundCount -ne 0) {
+    Write-Host "Found $uwpFoundCount pre-installed apps"
+    foreach ($uwp in $uwpApps) {
+      if (Get-AppxPackage -Name $uwp) {
+        Get-AppxPackage -Name $uwp | Remove-AppxPackage
+        Write-Host "$uwp was removed" -ForegroundColor Green
+      }
+    }
+  } else {
+    Write-Host "No pre-installed apps found"
+  }
+
+Write-Host "`n"

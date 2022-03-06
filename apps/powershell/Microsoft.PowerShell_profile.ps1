@@ -5,6 +5,7 @@
 Import-Module posh-git
 Import-Module oh-my-posh
 Import-Module Get-ChildItemColor
+Import-Module "~\Documents\WindowsPowerShell\functions.psm1" # -Verbose
 
 # Read key handlers
 # ===================================
@@ -35,6 +36,5 @@ If (Test-Path Alias:curl) {Remove-Item Alias:curl}
 # Set theme
 oh-my-posh --init --shell pwsh --config "~\AppData\Local\oh-my-posh\themes\atomic.omp.json" | Invoke-Expression
 
-Write-Host "Hola Mundo!!!"
-
 # Set-Theme SpencerTechy
+
