@@ -61,9 +61,8 @@ foreach ($app in $commonApps) {
   #check if the app is already installed
   $listApp = winget list --exact -q $app
   if (![String]::Join("", $listApp).Contains($app)) {
-    Write-host "Installing:" $app -ForegroundColor Yellow
     winget install --exact --silent $app
-    Write-Host "$app was installed" -ForegroundColor Green
+    Write-Host "$app installed" -ForegroundColor Green
   } else {
     Write-Host "$app already installed"
   }

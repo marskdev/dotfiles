@@ -13,6 +13,7 @@ if (!(Get-Command -Name "choco" -ErrorAction SilentlyContinue)) {
 $chocoApps = @(
   # "paint.net",
   # "autoruns",
+  "firacodenf",
   "firacode"
   # "devtoys", # Error installing in choco, unable in winget install from msstore
   # "cmder"

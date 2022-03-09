@@ -4,3 +4,6 @@ cp ..\apps\powershell\functions.psm1 ~\Documents\WindowsPowerShell\functions.psm
 
 # Windows Terminal
 cp ..\apps\terminal\settings.json ~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+
+# Git
+cp ..\apps\git\gitconfig ~\.gitconfig

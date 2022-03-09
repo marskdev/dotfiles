@@ -5,6 +5,8 @@
 Import-Module posh-git
 Import-Module oh-my-posh
 Import-Module Get-ChildItemColor
+
+Get-item ~\Documents\WindowsPowerShell\functions.psm1 | Unblock-File
 Import-Module "~\Documents\WindowsPowerShell\functions.psm1" # -Verbose
 
 # Read key handlers

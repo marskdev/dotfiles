@@ -39,7 +39,7 @@ foreach ($uwp in $uwpApps) {
     foreach ($uwp in $uwpApps) {
       if (Get-AppxPackage -Name $uwp) {
         Get-AppxPackage -Name $uwp | Remove-AppxPackage
-        Write-Host "$uwp was removed" -ForegroundColor Green
+        Write-Host "$uwp removed" -ForegroundColor Green
       }
     }
   } else {
